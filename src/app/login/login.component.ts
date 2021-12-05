@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import {LoginService} from './login.service'
+import {AppRoutingModule} from '../app-routing.module'
+import { Routes, RouterModule,Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ import {LoginService} from './login.service'
 export class LoginComponent implements OnInit {
   userName:any
   Password:any;
-  constructor(private loginservice:LoginService) { }
+  flag=false;
+  constructor(private loginservice:LoginService,private router:Router,private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -22,11 +25,17 @@ export class LoginComponent implements OnInit {
       "userName" :this.userName,
       "password":this.Password
     }
-this.loginservice.authenticateUser(obj).subscribe(
-  (response)=>{
-console.log(response)
+    this.router.navigate(['mainlayout'], {relativeTo:this.route});
+// this.loginservice.authenticateUser(obj).subscribe(
+//   (response)=>{
+// console.log(response)
+//   }
+// )
   }
-)
+
+  clickCreateAccount(){
+    this.flag=true
+    this.router.navigate(['CreateAccountComponent']);
   }
 
 }
