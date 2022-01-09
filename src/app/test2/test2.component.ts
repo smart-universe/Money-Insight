@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Routes, RouterModule,Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test2',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Test2Component implements OnInit {
 
-  constructor() { }
+  public data:any=[1,2,3]
+  public showQuest=false;
+  constructor(private router:Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  gotoQuest(){
+    this.showQuest=true;
   }
 
 }

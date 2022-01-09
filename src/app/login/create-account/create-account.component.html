@@ -1,12 +1,93 @@
-<!-- <p>create-account works!</p> -->
-<div class="navbar navbar-inverse bg-inverse" title="This Header is rendered by /app/_layout/app-header/app-header.component.html">
-    <div class="container d-flex justify-content-between">
-      <a href="#" class="navbar-brand">App Page</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <h2 class="text-center">Register</h2>
+
+  <html>
+
+    <app-alert-messages [Message]="Message" [MessageType]="MessageType"></app-alert-messages>
+
+
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="container">
       
+    <div class="row">
+  
+      
+          <label class="col-lg-4" for="firstName">First Name</label>
+        
+        <div class="col-lg-4">
+          <input type="text" required [(ngModel)]="firstName" name="fname" class="form-control" #fname=ngModel  />
+          
+          <div *ngIf="fname.touched &&fname.invalid" class="alerr alert-danger">
+            First Name is required
+          </div>
+      </div>
     </div>
-  </div>
-  <button type="button" class="btn btn-primary btn-block" (click)="clickLogin()">Log in</button>
-  <router-outlet></router-outlet>
+
+      <div class="row">
+          <label class="col-lg-4" for="lastName">Last Name</label>
+          <div class="col-lg-4">
+          <input type="text" required class="form-control" name="lName" [(ngModel)]="LastName" #lName=ngModel  />
+          <div *ngIf="lName.touched &&lName.invalid" class="alerr alert-danger">
+            Last Name is required
+          </div>
+          </div>
+          
+      </div>
+      <div class="row">
+        <label class="col-lg-4" for="lastName">User Name</label>
+        <div class="col-lg-4">
+        <input type="text" required class="form-control" name="uName" [(ngModel)]="username"  #uName=ngModel/>
+        <div *ngIf="uName.touched &&uName.invalid" class="alerr alert-danger">
+          User Name is required
+        </div>
+        </div>
+        
+    </div>
+      <div class="row">
+          <label class="col-lg-4" for="username">Email</label>
+          <div class="col-lg-4">
+          <input type="text" required class="form-control" required name="email" [(ngModel)]="emailId" [pattern]="emailPattern" 
+          #email="ngModel" />
+          
+          <div *ngIf="email.errors && email.touched" class="alert alert-danger"> 
+            <div *ngIf="email.errors?.required"> 
+                Email required.
+            </div>			   
+            <div *ngIf="email.errors?.pattern"> 
+                Email not valid.
+            </div>	
+        </div>
+        </div>
+          
+      </div>
+      <div class="row">
+        <label class="col-lg-4" for="username">Country</label>
+        <div class="col-lg-4">
+        <input type="text" required class="form-control" name="countryName" [(ngModel)]="country" #countryName=ngModel/>
+        <div *ngIf="countryName.touched &&countryName.invalid" class="alerr alert-danger">
+          Country  is required
+        </div>
+      </div>
+        
+    </div>
+      <div class="row">
+          <label class="col-lg-4" for="password">Password</label>
+          <div class="col-lg-4">
+          <input type="password" required class="form-control" name="passwordName" [(ngModel)]="password" #passwordName=ngModel />
+          <div *ngIf="passwordName.touched &&passwordName.invalid" class="alerr alert-danger">
+            Password  is required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <button [disabled]="loading" class="btn btn-primary" type="submit">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Register
+          </button>
+          <a routerLink="/login" class="btn btn-link">Cancel</a>
+      </div>
+    </div>
+  </form>
+
+    </html>
+
+    <router-outlet></router-outlet>
