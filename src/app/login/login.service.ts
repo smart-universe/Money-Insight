@@ -11,21 +11,18 @@ export class LoginService {
 
 
   public authenticateUser(data:any){
-    let url='localhost:8083/authenticate'
+    let url='http://localhost:8083/auth/authenticate'
     return this.http.post(url,data)
   }
 
   public createUser(data:any){
-    let url='http://localhost:8083/createUser'
+    let url='http://localhost:8083/auth/createUser'
     return this.http.post(url,data)
   }
 
   public checkUserName(data:any){
-    let url='http://localhost:8083/checkUsername?UserName='
-    url=url.concat(data)
-    // let httpParams = new HttpParams()
-    //                     .set('username', data)
-                    
-    return this.http.get(url)
+    let url='http://localhost:8083/auth/checkUsername'
+    
+   return this.http.post(url,data)
   }
 }

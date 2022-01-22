@@ -23,4 +23,8 @@ export class MainLayoutComponent implements OnInit {
     this.router.navigate(['quest'], {relativeTo:this.route});
   }
 
+  clickPlan(){
+    this.router.navigate(['plan'], {relativeTo:this.route});
+  }
+
 }

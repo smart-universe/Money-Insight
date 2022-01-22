@@ -28,6 +28,7 @@ const routes: Routes = [
 children:[
   {path:'test2' ,component: Test2Component},
   {path:'quest' ,component: QuestComponent},
+  {path:'plan', component:PlanComponent}
 ]
 },
 

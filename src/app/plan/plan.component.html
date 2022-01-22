@@ -1,1 +1,29 @@
-<p>plan works!</p>
+<html>
+    
+<div  class="container">
+    
+    <h1 class="center">Plan your Tour</h1>
+    <button type="button" class="btn btn-primary btn-lg" 
+   (click)="clickAdd()" >Add</button>
+
+    <table  style="width:100%" CELLSPACING=10>
+        <tbody>
+            <tr style="width:100%">
+                
+                <th>Item</th>
+                <th>Amount</th>
+                
+            </tr>
+       
+       
+            <tr *ngFor="let item of data">
+               <td> <input type="text" class="form-control" name=data id=data [(ngModel)]="item.itemName" placeholder="Enter Item Name" ></td>
+               <td>  <input type="text" class="form-control" name=amount id=amount [(ngModel)]="item.Amount" placeholder="Enter Amount" ></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</html>
+
+

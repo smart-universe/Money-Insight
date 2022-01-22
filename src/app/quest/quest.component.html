@@ -1,20 +1,22 @@
 
-<div class="container pd-lt-non pd-rt-non">
+<div class="container">
+    <div class="col-lg-6 pd-lt-non pd-rt-non">
     <div class="row">
                
-        <div class="col-lg-6 pd-lt-non">
+        <div class="col-lg-6 pd-rt-non  pd-lt-non">
            
                   <input type="text" class="form-control" placeholder="Enter Tour Name" >
         </div>
         
-         
-           <div class="col-lg-6 pd-lt-non">
+         <div class="col-lg-6 pd-lt-non">
                 
                 <input type="text" class="form-control" placeholder="Enter Source" >
 
             </div>
 
 </div>
+</div>
+<div class="col-lg-6 pd-lt-non pd-rt-non">
 <div class="row">
     <div class="col-lg-6">
         <div  class="text-right">
@@ -23,6 +25,66 @@
 
     </div>
 </div>
+</div>
+<div class="row">
+<div class="row">
+    <div class="col-lg-6">
+        <div  class="text-right">
+            
+            <my-date-picker [options]="startDatePickerOptions" [(ngModel)]="myStartDate"
+            placeholder="Select Start Date"
+            ></my-date-picker>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div  class="text-right">
+            
+            <my-date-picker [options]="expireyDatePickerOptions" [(ngModel)]="myEndDate"
+            placeholder="Select End Date"
+            ></my-date-picker>
+
+    </div>
+</div>
+</div>
+</div>
+<div class="col-lg-6 pd-lt-non pd-rt-non">
+<div class="row">
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary btn-block" (click)="addCohort()">Add</button> 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div  class="text-right">
+            
+            
+            <table style="width:100%" CELLSPACING=10>
+                <tbody>
+                    <tr>
+                        <th>Enter Cohort Name</th>
+                    </tr>
+
+                    <tr *ngFor="let item of cohorts">
+                        <input type="text" class="form-control" name=data id=data [(ngModel)]="item.cohortName" placeholder="Enter Cohort Name" >
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+</div>
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary btn-block" (click)="createTour()">Create Tour</button> 
+    </div>
 </div>
 
 </div>

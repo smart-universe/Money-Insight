@@ -39,10 +39,11 @@
     }
 
     clickRegister(){
-      
-      
-
-      this.loginservice.checkUserName(this.username).subscribe(
+      let Checkobj:any={
+        "username":this.username,
+       
+      }
+      this.loginservice.checkUserName(Checkobj).subscribe(
         (data)=>{
       var res:any=data;
       if(res.exists){
@@ -57,13 +58,18 @@
             "lastName":this.LastName,
             "country":this.country
           }
+          debugger
           this.loginservice.createUser(obj).subscribe(
             (response)=>{
           console.log(response)
           this.Message="User Created Successfully"
           this.MessageType="Success"
-            }
-          )
+          this.router.navigate(['LoginComponent'], {relativeTo:this.route});
+            },error=>{
+              this.Message="Contact Admin"
+              this.MessageType="Error"
+            });
+          
           
         }
       

@@ -22,15 +22,21 @@ export class LoginComponent implements OnInit {
   clickLogin(){
     debugger
     let obj:any={
-      "userName" :this.userName,
+      "username" :this.userName,
       "password":this.Password
     }
-    this.router.navigate(['mainlayout'], {relativeTo:this.route});
-// this.loginservice.authenticateUser(obj).subscribe(
-//   (response)=>{
-// console.log(response)
-//   }
-// )
+    //this.router.navigate(['mainlayout'], {relativeTo:this.route});
+this.loginservice.authenticateUser(obj).subscribe(
+  (response)=>{
+console.log(response)
+let res:any=response;
+if(res.resultCode==1){
+sessionStorage.setItem('token',res.jwt);
+sessionStorage.setItem('userId',res.user.userID)
+ this.router.navigate(['mainlayout'], {relativeTo:this.route});
+}
+  }
+)
   }
 
   clickCreateAccount(){
